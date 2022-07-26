@@ -1,42 +1,57 @@
 class Complex():
-    def __init__(self, a=0, b=0):
-        self.a = a
-        self.b = b
+    def initComplex(self):
+        self.realPart = int(input("Enter the Real Part: "))
+        self.imgPart = int(input("Enter the Imaginary Part: "))
 
-    def __str__(self):
-        return "{0}+{1}j".format(self.a, self.b)
+    def display(self):
+        print(self.realPart, "+", self.imgPart, "i", sep="")
 
-    def __add__(self, other):
-        a = self.a + other.a
-        b = self.b + other.b
-        return Complex(a, b)
+    def sum(self, c1, c2):
+        self.realPart = c1.realPart + c2.realPart
+        self.imgPart = c1.imgPart + c2.imgPart
 
-    def __sub__(self, other):
-        a = self.a - other.a
-        b = self.b - other.b
-        return Complex(a, b)
+    def mul(self, c1, c2):
+        self.realPart = c1.realPart * c2.realPart
+        self.imgPart = c1.imgPart * c2.imgPart
 
-    def __mul__(self, other):
-        return Complex(a * b)
+    def sub(self, c1, c2):
+        self.realPart = c1.realPart - c2.realPart
+        self.imgPart = c1.imgPart - c2.imgPart
 
-    def __ge__(self, other):
-        self_ge = (self.a ** 2) + (self.b ** 2)
-        other_ge = (other.a ** 2) + (other.b ** 2)
-        return self_ge >= other_ge
+    def mul(self, c1, c2):
+        self.realPart = c1.realPart * c2.realPart
+        self.imgPart = c1.imgPart * c2.imgPart
 
+    def ge(self, c1, c2):
+        self.realPart = (c1.realPart**2) + (c2.realPart**2)
+        self.imgPart = (c1.imgPart**2) + (c2.imgPart**2)
+        print(self.realPart>=self.imgPart)
+        print(self.realPart == self.imgPart)
 
-a = complex(input("Enter First Complex Number: "))
-b = complex(input("Enter Second Complex Number: "))
-real1, img1 = ((str(a).strip('(')).strip(')')).strip('j').split('+')
-real2, img2 = ((str(b).strip('(')).strip(')')).strip('j').split('+')
-print("--------------------------------------------------")
-c1 = Complex(int(real1), int(img1))
-c2 = Complex(int(real2), int(img2))
-print("--------------------------------------------------")
-print("Additon Of 2 complex number---> ", c1 + c2)
-print("Subtraction of 2 complex number---> ", c1 - c2)
-print("Multiplication of 2 complex number---> ", str(c1 * c2).strip('+0j'))
-print("C1>=C2: ", c1 >= c2)
-print("C1==C2: ", c1 == c2)
+c1 = Complex()
+c2 = Complex()
+c3 = Complex()
+c4 = Complex()
+c5 = Complex()
+c6 = Complex()
+print("Enter first complex number : ")
+c1.initComplex()
+print("First Complex Number : ", end="")
+c1.display()
+print("Enter second complex number : ")
+c2.initComplex()
+print("Second Complex Number : ", end="")
+c2.display()
+print("Sum of two complex numbers is : ", end="")
 
+c3.sum(c1, c2)
+c3.display()
 
+c4.sub(c1, c2)
+c4.display()
+
+c5.mul(c1, c2)
+c5.display()
+
+c6.ge(c1, c2)
+c6.display()
